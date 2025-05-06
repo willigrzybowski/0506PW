@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { Aluno, Curso, Turma } = require('../models');
+const { Aluno, Curso} = require('../models');
 
 //Listar categoria
 router.get("/", async (req, res) => {
     try {
         const alunos = await Aluno.findAll({
           include: [{ model: Curso, as: "Curso" }],
-          include: [{ model: Turma, as: "Turma" }],
         });
         res.render("base", {
           title: "Alunos",
@@ -24,12 +23,10 @@ router.get("/", async (req, res) => {
 router.get("/add", async (req, res) => {
     try {
         const cursos = await Curso.findAll();
-        const turmas = await Turma.findAll();
         res.render("base", {
           title: "Add Aluno",
           view: "alunos/add",
           cursos,
-          turmas,
         });
       } catch (err) {
         console.error(err);
@@ -40,8 +37,8 @@ router.get("/add", async (req, res) => {
 //add nova categoria - no bd
 router.post("/add", async(req, res) =>{
     try {
-        const { nome, idade, cursoId, turmaId } = req.body;
-        await Aluno.create({ nome, idade, cursoId, turmaId });
+        const { nome, idade, cursoId} = req.body;
+        await Aluno.create({ nome, idade, cursoId });
         res.redirect("/alunos");
       } catch (err) {
         console.error(err);
@@ -55,17 +52,14 @@ router.get("/edit/:id", async (req, res) => {
         const { id } = req.params;
         const aluno = await Aluno.findByPk(id, {
           include: [{ model: Curso, as: "Curso" }],
-          include: [{ model: Turma, as: "Turma" }],
         });
         const cursos = await Curso.findAll();
-        const turmas = await Turma.findAll();
         if (aluno) {
           res.render("base", {
             title: "Edit Aluno",
             view: "alunos/edit",
             aluno,
             cursos,
-            turmas,
           });
         } else {
           res.status(404).send("Aluno não encontrado");
@@ -80,10 +74,10 @@ router.get("/edit/:id", async (req, res) => {
 router.post("/edit/:id", async(req, res) =>{
     try {
         const { id } = req.params;
-        const { nome, idade, cursoId, turmaId } = req.body;
+        const { nome, idade, cursoId } = req.body;
         const aluno = await Aluno.findByPk(id);
         if (aluno) {
-          await aluno.update({ nome, idade, cursoId, turmaId });
+          await aluno.update({ nome, idade, cursoId});
           res.redirect("/alunos");
         } else {
           res.status(404).send("Aluno não encontrado");
