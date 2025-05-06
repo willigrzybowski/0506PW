@@ -1,0 +1,35 @@
+<h1>Professores</h1>
+
+<a href="/professores/add" class="btn btn-success mb-3">Add Professor</a>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Matéria</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% professores.forEach(professor=> { %>
+            <tr>
+                <td>
+                    <%= professor.id %>
+                </td>
+                <td>
+                    <%= professor.nome %>
+                </td>
+                <td><%= professor.Materia?.nome || 'Sem matéria' %></td>
+                
+                <td>
+                    <a href="/professores/edit/<%= professor.id %>" class="btn btn-primary btn-sm">Editar</a>
+                    <form action="/professores/delete/<%= professor.id %>" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+
+            <% }) %>
+    </tbody>
+</table>

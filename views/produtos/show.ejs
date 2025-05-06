@@ -1,0 +1,31 @@
+<h1>Produtos</h1>
+
+<a href="/produtos/add" class="btn btn-success mb-3">Adicionar Produto</a>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% produtos.forEach(produto => { %>
+      <tr>
+        <td><%= produto.id %></td>
+        <td><%= produto.nome %></td>
+        <td>R$ <%= produto.valor %></td>
+        <td><%= produto.Categoria?.nome || 'Sem categoria' %></td>
+        <td>
+          <a href="/produtos/edit/<%= produto.id %>" class="btn btn-primary btn-sm">Editar</a>
+          <form action="/produtos/delete/<%= produto.id %>" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

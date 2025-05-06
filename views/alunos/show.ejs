@@ -1,0 +1,39 @@
+<h1>Alunos</h1>
+
+<a href="/alunos/add" class="btn btn-success mb-3">Add Aluno</a>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Curso</th>
+            <th>Turma</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% alunos.forEach(aluno=> { %>
+            <tr>
+                <td>
+                    <%= aluno.id %>
+                </td>
+                <td>
+                    <%= aluno.nome %>
+                </td>
+                <td><%= aluno.idade %>
+                </td>
+                <td><%= aluno.Curso?.nome || 'Sem curso' %></td>
+                <td><%= aluno.Turma?.nome || 'Sem Turma' %></td>
+                <td>
+                    <a href="/alunos/edit/<%= aluno.id %>" class="btn btn-primary btn-sm">Editar</a>
+                    <form action="/alunos/delete/<%= aluno.id %>" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+
+            <% }) %>
+    </tbody>
+</table>

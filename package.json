@@ -1,0 +1,26 @@
+{
+  "name": "crud_basico",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crud_basico": "file:",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "ejs-layouts": "^0.0.1",
+    "express": "^4.21.2",
+    "mysql2": "^3.14.1",
+    "pg": "^8.15.6",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "description": ""
+}

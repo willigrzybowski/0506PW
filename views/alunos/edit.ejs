@@ -1,0 +1,33 @@
+<h1>Editar Aluno</h1>
+
+<form action="/alunos/edit/<%= aluno.id %>" method="POST">
+    <div class="form-group">
+        <label for="nome">Aluno</label>
+        <input type="text" class="form-control" id="nome" name="nome" value="<%= aluno.nome %>" required>
+    </div>
+
+    <div class="form-group">
+        <label for="idade">Idade</label>
+        <input type="number" class="form-control" id="idade" name="idade" value="<%= aluno.idade %>" required>
+    </div>
+
+    <div class="form-group">
+        <label for="curso">Curso</label>
+        <select class="form-control" id="curso" name="cursoId" required>
+            <% cursos.forEach(curso => { %>
+                <option value="<%= curso.id %>" <%= curso.id === aluno.cursoId ? 'selected' : '' %>><%= curso.nome %></option>
+            <% }) %>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="turma">Turma</label>
+        <select class="form-control" id="turma" name="turmaId" required>
+            <% turmas.forEach(turma => { %>
+                <option value="<%= turma.id %>" <%= turma.id === aluno.turmaId ? 'selected' : '' %>><%= turma.nome %></option>
+            <% }) %>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>

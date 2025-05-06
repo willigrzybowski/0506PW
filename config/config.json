@@ -1,0 +1,9 @@
+{
+  "development": {
+      "username": "root",
+      "password": "",
+      "database": "3dspi",
+      "host": "localhost",
+      "dialect": "mysql"
+  }
+}

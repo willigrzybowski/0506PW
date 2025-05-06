@@ -1,0 +1,29 @@
+<h1>Add Aluno</h1>
+<form action="/alunos/add" method="POST">
+    <div class="form-group">
+        <label for="nome">Aluno</label>
+        <input type="text" class="form-control" id="nome" name="nome" required>
+
+    </div>
+    <div class="form-group">
+        <label for="idade">Idade</label>
+        <input type="number" class="form-control" id="idade" name="idade" required>
+    </div>
+    <div class="form-group">
+        <label for="curso">Curso</label>
+        <select class="form-control" id="curso" name="cursoId" required>
+            <% cursos.forEach(curso => { %>
+            <option value="<%= curso.id %>"><%= curso.nome %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="turma">Turma</label>
+        <select class="form-control" id="turma" name="turmaId" required>
+            <% turmas.forEach(turma => { %>
+            <option value="<%= turma.id %>"><%= turma.nome %></option>
+            <% }) %>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

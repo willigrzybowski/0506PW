@@ -1,0 +1,8 @@
+<h1>Editar Materia</h1>
+<form action="/materias/edit/<%= materia.id %>" method="POST">
+    <div class="form-group">
+        <label for="nome">Materia</label>
+        <input type="text" class="form-control" id="nome" name="nome" value="<%= materia.nome %>" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>

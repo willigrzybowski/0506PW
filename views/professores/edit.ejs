@@ -1,0 +1,13 @@
+<h1>Editar Professor</h1>
+<form action="/professores/edit/<%= professor.id %>" method="POST">
+    <div class="form-group">
+        <label for="nome">Professor</label>
+        <input type="text" class="form-control" id="nome" name="nome" value="<%= professor.nome %>" required>
+
+    </div>
+    <div class="form-group">
+        <label for="materia">Matéria</label>
+        <input type="text" class="form-control" id="materia" name="materia" value="<%= professor.materia %>" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>
